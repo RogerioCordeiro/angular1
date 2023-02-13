@@ -5,5 +5,5 @@ gulp.task('watch', () => {
 } )
 
 gulp.task('server', ['watch'], () => {
-    
+
 })
