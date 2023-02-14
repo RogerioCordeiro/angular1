@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const babel = require('gulp-babel')
 const uglify = require('gulp-uglify')
-const uglifycss = require('gulp-uglify')
+const uglifycss = require('gulp-uglifycss')
 const concat = require('gulp-concat')
 const htmlmin = require('gulp-htmlmin')
 
@@ -26,7 +26,7 @@ gulp.task('app.js', () => {
     .pipe(babel({ presets: ['env'] }))
     .pipe(uglify())
     .pipe(concat('app.min.js'))
-    .pipe(gulp.dest('public/assets/fonts'))
+    .pipe(gulp.dest('public/assets/js'))
 })
 
 gulp.task('app.assets', () => {

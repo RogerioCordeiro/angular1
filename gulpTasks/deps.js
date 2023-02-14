@@ -1,6 +1,6 @@
 const gulp = require('gulp')
 const uglify = require('gulp-uglify')
-const uglifycss = requiew('gulp-uglifycss')
+const uglifycss = require('gulp-uglifycss')
 const concat = require('gulp-concat')
 
 gulp.task('deps', ['deps.js', 'deps.css', 'deps.fonts'])
@@ -26,10 +26,10 @@ gulp.task('deps.css', () => {
         'node_modules/angular-toastr/dist/angular-toastr.min.css',
         'node_modules/font-awesome/css/font-awesome.min.css',
         'node_modules/admin-lte/bootstrap/css/bootstrap.min.css',
-        'node_modules/admin-lte/dist/css/AdminLTE.mi.css',
+        'node_modules/admin-lte/dist/css/AdminLTE.min.css',
         'node_modules/admin-lte/dist/css/skins/_all-skins.min.js'
     ])
-    .pipe(uglifycss({"uglyComments": true}))
+    .pipe(uglifycss({ "uglyComments": true }))
     .pipe(concat('deps.min.css'))
     .pipe(gulp.dest('public/assets/css'))
 })
