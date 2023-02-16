@@ -12,7 +12,7 @@
 
     vm.refresh = function() {
       $http.get(url).then(function(response){
-        vm.billingCycle = {credits: [{}], debts:[{}]}
+        vm.billingCycle = {credits: [{}], debts: [{}]}
         vm.billingCycles = response.data
         tabs.show(vm, {tabList: true, tabCreate: true})
       })
@@ -45,7 +45,7 @@
       }).catch(function(response) {
         msgs.addError(response.data.errors)
       })
-    }   
+    } 
 
     vm.delete = function() {
       const deleteUrl = `${url}/${vm.billingCycle._id}`
@@ -55,6 +55,34 @@
       }).catch(function(response) {
         msgs.addError(response.data.errors)
       })
+    }
+    
+    vm.addCredit = function(index) {
+      vm.billingCycle.credits.splice(index +1, 0, {})
+    }
+    
+    vm.cloneCredit = function(index, {name, value}) {
+      vm.billingCycle.credits.splice(index +1, 0, {name, value})
+    }
+
+    vm.deleteCredit = function(index) {
+      if(vm.billingCycle.credits.length >1) { 
+        vm.billingCycle.credits.splice(index, 1)
+      }
+    }
+
+    vm.addDebt = function(index) {
+      vm.billingCycle.debts.splice(index +1, 0, {})
+    }
+    
+    vm.cloneDebt = function(index, {name, value, status}) {
+      vm.billingCycle.debts.splice(index +1, 0, {name, value, status})
+    }
+
+    vm.deleteDebt = function(index) {
+      if(vm.billingCycle.debts.length >1) { 
+        vm.billingCycle.debts.splice(index, 1)
+      }
     }
 
     vm.refresh()
