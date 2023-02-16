@@ -21,6 +21,7 @@
     function addError(msgs) {
       addMsg(msgs, 'Erro', 'error')
     }
+    
 
     return { addSuccess, addError }
   }

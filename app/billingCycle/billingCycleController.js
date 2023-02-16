@@ -21,12 +21,11 @@
     vm.create = function() {
       $http.post(url, vm.billingCycle).then(function(response) {
         vm.refresh()
-        msgs.addSucess('Operação realizada com sucesso!!')
+        msgs.addSuccess('Operação realizada com sucesso!')
       }).catch(function(response) {
         msgs.addError(response.data.errors)
       })
     }
-
 
     vm.showTabUpdate = function(billingCycle) {
       vm.billingCycle = billingCycle
@@ -36,6 +35,16 @@
     vm.showTabDelete = function(billingCycle){
       vm.billingCycle = billingCycle
       tabs.show(vm, {tabDelete: true})
+    }
+
+    vm.delete = function() {
+      const deleteUrl = `${url}/${vm.billingCycle._id}`
+      $http.delete(deleteUrl, vm.billingCycle).then(function(response) {
+        vm.refresh()
+        msgs.addSuccess('Operação realizada com sucesso!')
+      }).catch(function(response) {
+        msgs.addError(response.data.errors)
+      })
     }
 
     vm.refresh()
