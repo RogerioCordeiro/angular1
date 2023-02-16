@@ -11,11 +11,11 @@
       <tr ng-repeat="credit in bcCtrl.billingCycle.credits">
         <td>
           <input ng-model="credit.name" class="form-control" placeholder="Informe o Nome"
-          ng-readonly="bcCtrl.tabDelete" />
+           ng-readonly="bcCtrl.tabDelete" />
         </td>
         <td>
           <input ng-model="credit.value" class="form-control" placeholder="informe o Valor"
-          ng-readonly="bcCtrl.tabDelete" type="number" />
+          ng-change="bcCtrl.calculateValues()" ng-readonly="bcCtrl.tabDelete" type="number" />
         </td> 
         <td class="table-actions">  
           <button class="btn btn-success" ng-class="{disabled: bcCtrl.tabDelete}"
