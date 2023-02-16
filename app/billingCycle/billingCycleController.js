@@ -12,7 +12,7 @@
 
     vm.refresh = function() {
       $http.get(url).then(function(response){
-        vm.billingCycle = {}
+        vm.billingCycle = {credits: [{}], debts:[{}]}
         vm.billingCycles = response.data
         tabs.show(vm, {tabList: true, tabCreate: true})
       })
@@ -45,7 +45,7 @@
       }).catch(function(response) {
         msgs.addError(response.data.errors)
       })
-    }
+    }   
 
     vm.delete = function() {
       const deleteUrl = `${url}/${vm.billingCycle._id}`
